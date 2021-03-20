@@ -1,8 +1,6 @@
 const http = require('http');
 const url = require('url');
 
-//responses
-
 const server = http.createServer(function(req, res){
 
     // Get the url and parse it
@@ -12,15 +10,15 @@ const server = http.createServer(function(req, res){
     const path = parseUrl.pathname;
     const trimPath = path.replace(/^\/+|\/+$/g,'');
 
+    const method = req.method.toLowerCase();
+
     // Send the response
     res.end('End\n');
 
-    // Log
-    console.log('path:', trimPath);
+    console.log('path:', trimPath, method);
     
 });
 
-//start listening
 server.listen(3000, function(){
     console.log("server!");
 });
